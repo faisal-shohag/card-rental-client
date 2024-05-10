@@ -63,12 +63,18 @@ const CarSelect = () => {
           </button>)
         }
       </div>
-
-      <Link class="nav-link" to={`forms/${selectedVehicle}`}>
+      
+      {
+        selectedVehicle ?  <Link class="nav-link" to={`forms/${selectedVehicle}`}>
         <button className="bg-[#29D8DB] text-white rounded-full ml-9 my-4 py-3 mx-auto w-4/5 font-semibold">
           Request Trip
         </button>
-      </Link>
+      </Link> : <button disabled className="bg-[#6edbdd] cursor-not-allowed text-white rounded-full ml-9 my-4 py-3 mx-auto w-4/5 font-semibold">
+          Request Trip
+        </button>
+      }
+     
+
     </div>
   </div> : <div>Loading...</div>
   
