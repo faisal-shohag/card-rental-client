@@ -172,6 +172,7 @@ const Forms = () => {
                             name="radio-10"
                             className="radio checked:bg-red-500 border-gray-400"
                             onClick={()=> handleSelectVehicle(car.id)}
+                            checked = {selectedVehicle.id == car.id}
                           />
                         </label>
                       </div>)
