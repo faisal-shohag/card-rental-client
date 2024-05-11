@@ -49,13 +49,22 @@ const Forms = () => {
 
  const bookSubmit = (e) => {
     e.preventDefault()
+
+    if(!pick || !drop){
+      toast.error('Please select pick up and drop off location!')
+      return
+    }
     const data = {
       name: e.target.name.value,
-      email: e.target.name.value,
+      email: e.target.email.value,
+      pick: pick,
+      drop: drop
     }
 
+    console.log(data)
+
     toast.promise(
-      fetch("http://localhost:5000/mail-to-user", {
+      fetch("https://car-rental-back-end.vercel.app/mail-to-user", {
         method: "POST",
         headers: {
           "content-type": "application/json",
