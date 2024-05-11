@@ -58,7 +58,8 @@ const Forms = () => {
       name: e.target.name.value,
       email: e.target.email.value,
       pick: pick,
-      drop: drop
+      drop: drop,
+      carName: selectedVehicle.name
     }
 
     console.log(data)
