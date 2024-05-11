@@ -49,7 +49,7 @@ const AutoComplete = ({id, handleLocation}) => {
     return (
         <div>
         <div id={"map"+id}></div>
-            <div id={"search-box"+id}></div>
+            <div className="relative" id={"search-box"+id}></div>
             <div className='hidden' id="result"></div>
         </div>
     );

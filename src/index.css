@@ -281,8 +281,8 @@
   
   /* Location Auto Complete */
   .leaflet-locationiq-results {
-    position: static;
-    margin-top: 50px;
+    position:absolute;
+    z-index: 10;
   }
 
   .leaflet-bar a.leaflet-locationiq-search-icon{
@@ -314,4 +314,12 @@
     box-shadow: 0px 2px 4px rgba(0,0,0,.5);
     border: 1px solid rgb(255, 255, 255);
     border-radius: 10px;
+  }
+  .leaflet-locationiq-control {
+    z-index: revert-layer;
+  }
+  .leaflet-locationiq-close{
+    position: absolute;
+    top: 0;
+    
   }

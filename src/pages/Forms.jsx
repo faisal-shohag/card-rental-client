@@ -30,6 +30,7 @@ const Forms = () => {
   const handleSelectVehicle = (id) => {
     let car = cars.filter(c=> c.id == id)
     setSelectedVehicle(car[0]);
+    localStorage.setItem('car', JSON.stringify(car[0]))
     document.getElementById("my_modal_3").close()
   };
 
