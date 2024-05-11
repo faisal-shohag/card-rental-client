@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaToggleOn, FaToggleOff } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import AutoComplete from "../components/AutoComplete";
 import toast from "react-hot-toast";
+import ThankYou from "./ThankYou";
 
 const Forms = () => {
   const [isToggled, setIsToggled] = useState(false);
+  const [bookingData, setBookingData] = useState(null);
+
   const param = parseInt(useParams().id);
   const navigate = useNavigate();
 
@@ -15,9 +18,15 @@ const Forms = () => {
   };
 
   const [cars, setCars] = useState([]);
-  const [selectedVehiclee, setSelectedVehiclee] = useState(null);
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [pick, setPick] = useState(null);
   const [drop, setDrop] = useState(null);
+  const pickDateRef = useRef(null)
+  const pickTimeRef = useRef(null)
+  const tripDateRef = useRef(null)
+  const tripTimeRef = useRef(null)
+
+
 
   const handlePick = (location) => {
     setPick(location);
@@ -27,10 +36,10 @@ const Forms = () => {
     setDrop(location);
   };
 
-  const handleSelectVehiclee = (id) => {
+  const handleSelectVehicle = (id) => {
     let car = cars.filter((c) => c.id == id);
-    setSelectedVehiclee(car[0]);
-    localStorage.setItem("car", JSON.stringify(car[0]));
+    setSelectedVehicle(car[0]);
+   
     document.getElementById("my_modal_3").close();
   };
 
@@ -40,7 +49,7 @@ const Forms = () => {
       .then((data) => {
         setCars(data);
         const car = data.filter((c) => c.id == param);
-        setSelectedVehiclee(car[0]);
+        setSelectedVehicle(car[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -54,15 +63,22 @@ const Forms = () => {
       toast.error("Please select pick up and drop off location!");
       return;
     }
+    console.log(e.target)
     const data = {
       name: e.target.name.value,
       email: e.target.email.value,
       pick: pick,
       drop: drop,
-      carName: selectedVehiclee.name,
+      carName: selectedVehicle.name,
+      pickTime: pickDateRef.current.value + " " + pickTimeRef.current.value,
+      roundTime: tripDateRef.current.value + " " + tripTimeRef.current.value,
+      bookedTime: new Date().toISOString()
     };
+    localStorage.setItem("car", JSON.stringify(data));
 
-    //console.log(data)
+    const queryParams = new URLSearchParams(data).toString();
+
+    console.log(data)
 
     toast.promise(
       fetch("https://car-rental-back-end.vercel.app/mail-to-user", {
@@ -73,22 +89,60 @@ const Forms = () => {
         body: JSON.stringify(data),
       })
         .then((res) => {
-          navigate("/thankYou");
+          //setBookingData(data);
+          navigate(`/thankYou/${queryParams}`);
           return res.json();
         })
         .then((d) => {
           if (d.err) throw new Error(d.err);
         }),
       {
-        loading: "Sending mail...",
+        loading: "Sending mail to user...",
         success: <b>Sent.</b>,
         error: (error) => <b>{error.message}</b>,
       }
     );
+
+    toast.promise(
+      fetch("https://car-rental-back-end.vercel.app/mail-to-admin", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+           email: "looserali420@gmail.com", 
+           client: {
+            name: data.name, 
+            email: data.email,
+            address: "client-address",
+          },
+          pick: pick,
+          drop: drop,
+          
+          }),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((d) => {
+          if (d.err) throw new Error(d.err);
+        }),
+      {
+        loading: "Sending mail to owner...",
+        success: <b>Sent.</b>,
+        error: (error) => <b>{error.message}</b>,
+      }
+    );
+    // Navigate to thank you page
   };
+
+  console.log(bookingData);
   return (
     <>
-      {selectedVehiclee ? (
+      {bookingData == null ? "" : <ThankYou bookingData={bookingData} />}
+
+      {selectedVehicle ? (
         <div>
           <div class="flex justify-center items-center">
             <div class=" main-form w-[600px] shadow-md  bg-white">
@@ -108,11 +162,11 @@ const Forms = () => {
                 <div class="car-brand flex justify-between py-6 px-10 ">
                   <div class="item-detail ">
                     <div>
-                      <img className="car" src={selectedVehiclee.img} alt="" />
+                      <img className="car" src={selectedVehicle.img} alt="" />
                     </div>
                     <div>
-                      <h2 className="sedan">{selectedVehiclee.name}</h2>
-                      <p className="car-seat">{selectedVehiclee.seat}</p>
+                      <h2 className="sedan">{selectedVehicle.name}</h2>
+                      <p className="car-seat">{selectedVehicle.seat}</p>
                     </div>
                   </div>
 
@@ -155,7 +209,7 @@ const Forms = () => {
                                   type="radio"
                                   name="radio-10"
                                   className="radio checked:bg-red-500 border-gray-400"
-                                  onClick={() => handleSelectVehiclee(car.id)}
+                                  onClick={() => handleSelectVehicle(car.id)}
                                 />
                               </label>
                             </div>
@@ -249,6 +303,8 @@ const Forms = () => {
                   </div>
                   <div>
                     <input
+                    name="pick_date"
+                    ref={pickDateRef}
                       type="date"
                       placeholder="Type here"
                       className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs "
@@ -275,6 +331,8 @@ const Forms = () => {
                   </div>
                   <div>
                     <input
+                    ref={pickTimeRef}
+                    name="pick_time"
                       type="time"
                       placeholder="3.44 am"
                       className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs "
@@ -335,6 +393,8 @@ const Forms = () => {
                         </div>
                         <div>
                           <input
+                          ref={tripDateRef}
+                          name="trip_name"
                             type="date"
                             placeholder="Type here"
                             className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs "
@@ -363,6 +423,8 @@ const Forms = () => {
                         </div>
                         <div>
                           <input
+                          ref={tripTimeRef}
+                          name="trip_time"
                             type="time"
                             placeholder="3.44 am"
                             className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs"
