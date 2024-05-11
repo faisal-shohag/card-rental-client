@@ -12,6 +12,7 @@ import Rental from './pages/Rental.jsx';
 import Forms from './pages/Forms.jsx';
 import CarSelect from './components/CarSelect.jsx';
 import { Toaster } from 'react-hot-toast';
+import ThankYou from './pages/ThankYou.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/forms/:id',
         element: <Forms/>
+      },
+      {
+        path: '/thankYou',
+        element: <ThankYou/>
       },
      
     ]
