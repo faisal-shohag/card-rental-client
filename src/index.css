@@ -277,3 +277,41 @@
     }
   }
   
+
+  
+  /* Location Auto Complete */
+  .leaflet-locationiq-results {
+    position: static;
+    margin-top: 50px;
+  }
+
+  .leaflet-bar a.leaflet-locationiq-search-icon{
+    display: none;
+  }
+  .leaflet-bar{
+    box-shadow: none
+  }
+
+  .leaflet-locationiq-expanded .leaflet-locationiq-input{
+    padding: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    line-height: 0px;
+  }
+  .leaflet-locationiq-control{
+    width: 482px !important;
+  }
+
+  .leaflet-locationiq-result{
+    box-shadow: 0px 2px 4px rgba(0,0,0,.5);
+  }
+
+  .leaflet-locationiq-result .name{
+    color: black;
+  }
+
+  .leaflet-locationiq-list{
+    box-shadow: 0px 2px 4px rgba(0,0,0,.5);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+  }

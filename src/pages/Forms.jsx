@@ -1,23 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { FaToggleOn, FaToggleOff } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
+import AutoComplete from "../components/AutoComplete";
+import toast from "react-hot-toast";
 
 const Forms = () => {
   const [isToggled, setIsToggled] = useState(false);
-  
   const param = parseInt(useParams().id)
 
-  console.log(param)
+  // console.log(param)
   const handleToggle = () => {
     setIsToggled(!isToggled);
   };
 
   const [cars, setCars] = useState([])
   const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [pick, setPick] = useState(null)
+  const [drop, setDrop] = useState(null)
+
+  const handlePick = (location) => {
+    setPick(location)
+  }
+
+  const handleDrop = (location) => {
+    setDrop(location)
+  }
 
 
-  const handleSelectVehicle = (vehicle) => {
-    setSelectedVehicle(vehicle);
+  const handleSelectVehicle = (id) => {
+    let car = cars.filter(c=> c.id == id)
+    setSelectedVehicle(car[0]);
+    document.getElementById("my_modal_3").close()
   };
 
   useEffect(() => {
@@ -32,7 +45,45 @@ const Forms = () => {
       console.log(err)
     })
   }, [])
-  console.log(selectedVehicle)
+
+
+ const bookSubmit = (e) => {
+    e.preventDefault()
+    const data = {
+      name: e.target.name.value,
+      email: e.target.name.value,
+    }
+
+    toast.promise(
+      fetch("http://localhost:5000/mail-to-user", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((d) => {
+          if (d.err) throw new Error(d.err);
+
+          
+        }),
+      {
+        loading: "Sending mail...",
+        success: <b>Sent.</b>,
+        error: (error) => <b>{error.message}</b>,
+      }
+    );
+
+
+
+    
+
+
+ }
+
 
 
   return (
@@ -88,19 +139,20 @@ const Forms = () => {
                     </form>
                     <div className="modal-body p-2 ">
                       {/* vehicl-number-------- */}
-                      <div className="form-control">
-                        <label className="label cursor-pointer ">
+                      {
+                        cars.map(car=> <div key={car.id} className="form-control">
+                        <label className="label cursor-pointer">
                           <div class="item-detail ">
                             <div>
                               <img
                                 className="car"
-                                src="../../public/images/s1.png"
+                                src={car.img}
                                 alt=""
                               />
                             </div>
                             <div>
-                              <h2 className="sedan">Sedan Car</h2>
-                              <p className="car-seat">4 Seats</p>
+                              <h2 className="sedan">{car.name}</h2>
+                              <p className="car-seat">{car.seat}</p>
                             </div>
                           </div>
 
@@ -108,106 +160,12 @@ const Forms = () => {
                             type="radio"
                             name="radio-10"
                             className="radio checked:bg-red-500 border-gray-400"
-                            checked
+                            onClick={()=> handleSelectVehicle(car.id)}
                           />
                         </label>
-                      </div>
-                      {/* vehicl-number-------- */}
-                      <div className="form-control">
-                        <label className="label cursor-pointer ">
-                          <div class="item-detail ">
-                            <div>
-                              <img
-                                className="car"
-                                src="../../public/images/s2.png"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <h2 className="sedan">Premium Sedan</h2>
-                              <p className="car-seat">4 Seats</p>
-                            </div>
-                          </div>
-                          <input
-                            type="radio"
-                            name="radio-10"
-                            className="radio checked:bg-red-500 border-gray-400"
-                            checked
-                          />
-                        </label>
-                      </div>
-                      {/* vehicl-number-------- */}
-                      <div className="form-control">
-                        <label className="label cursor-pointer ">
-                          <div class="item-detail ">
-                            <div>
-                              <img
-                                className="car"
-                                src="../../public/images/s3.png"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <h2 className="sedan">Mini Microbus</h2>
-                              <p className="car-seat">4 Seats</p>
-                            </div>
-                          </div>
-                          <input
-                            type="radio"
-                            name="radio-10"
-                            className="radio checked:bg-red-500 border-gray-400"
-                            checked
-                          />
-                        </label>
-                      </div>
-                      {/* vehicle-number-------- */}
-                      <div className="form-control">
-                        <label className="label cursor-pointer ">
-                          <div class="item-detail ">
-                            <div>
-                              <img
-                                className="car"
-                                src="../../public/images/s4.png"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <h2 className="sedan">Microbus</h2>
-                              <p className="car-seat">4 Seats</p>
-                            </div>
-                          </div>
-                          <input
-                            type="radio"
-                            name="radio-10"
-                            className="radio checked:bg-red-500 border-gray-400"
-                            checked
-                          />
-                        </label>
-                      </div>
-                      {/* vehicle-number-------- */}
-                      <div className="form-control">
-                        <label className="label cursor-pointer ">
-                          <div class="item-detail ">
-                            <div>
-                              <img
-                                className="car"
-                                src="../../public/images/s5.png"
-                                alt=""
-                              />
-                            </div>
-                            <div>
-                              <h2 className="sedan">Minibus</h2>
-                              <p className="car-seat">4 Seats</p>
-                            </div>
-                          </div>
-                          <input
-                            type="radio"
-                            name="radio-10"
-                            className="radio checked:bg-red-500 border-gray-400"
-                            checked
-                          />
-                        </label>
-                      </div>
+                      </div>)
+                      }
+                      
                     </div>
                   </div>
                 </dialog>
@@ -234,15 +192,15 @@ const Forms = () => {
 
                 <span class="drop-logo material-symbols-outlined">stop</span>
               </div>
-
               <div className="flex flex-col gap-5 me-20">
                 <div>
                   <h2 className="pickup">Pickup Point</h2>
-                  <input
+                  {/* <input
                     placeholder="Search pickup location"
                     className="search focus:outline-none"
                     type="search"
-                  />
+                  /> */}
+                  <AutoComplete id="pick-up" handleLocation={handlePick}/>
                 </div>
 
                
@@ -268,11 +226,12 @@ const Forms = () => {
 
                 <div>
                   <h2 className="pickup">Drop Off Point</h2>
-                  <input
+                  <AutoComplete id="drop-off" handleLocation={handleDrop}/>
+                  {/* <input
                     placeholder="Search drop off location"
                     className="search focus:outline-none"
                     type="search"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
@@ -425,25 +384,50 @@ const Forms = () => {
 
           <div class="flex  justify-center py-6">
             <div class="item-detail ">
-              <form>
-                <textarea
-                  className="messege"
-                  type="text"
-                  maxlength="100"
-                  minlength="10"
-                  placeholder="Enter your name"
-                />
+              <form onSubmit={bookSubmit}>
+              <div className="form-control">
+                            <label className="label">
+                              <span className="label-text">Name</span>
+                            </label>
+                            <input
+                              type="name"
+                              placeholder="Your Name"
+                              className="input input-bordered"
+                              name="name"
+                              required
+                            />
+                          </div>
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text">Email</span>
+                            </label>
+                            <input
+                              type="email"
+                              placeholder="Yout email"
+                              className="input input-bordered"
+                              required
+                              name="email"
+                            />
+                            
+                          </div>
+                        
+<button type="submit"
+              className="form-btn btn btn-secondary px-20 mt-10"
+            >
+              Book
+            </button>
+
+
               </form>
             </div>
           </div>
 
           <div className="flex justify-center">
-            <button
-              onClick={() => document.getElementById("my_modal_4").showModal()}
+            {/* <button
               className="form-btn btn btn-secondary px-20"
             >
               Next
-            </button>
+            </button> */}
 
             {/*modal ------*/}
             <dialog id="my_modal_4" className="modal main-modal">
