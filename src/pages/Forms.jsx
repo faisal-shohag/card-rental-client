@@ -21,12 +21,10 @@ const Forms = () => {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [pick, setPick] = useState(null);
   const [drop, setDrop] = useState(null);
-  const pickDateRef = useRef(null)
-  const pickTimeRef = useRef(null)
-  const tripDateRef = useRef(null)
-  const tripTimeRef = useRef(null)
-
-
+  const pickDateRef = useRef(null);
+  const pickTimeRef = useRef(null);
+  const tripDateRef = useRef(null);
+  const tripTimeRef = useRef(null);
 
   const handlePick = (location) => {
     setPick(location);
@@ -39,7 +37,7 @@ const Forms = () => {
   const handleSelectVehicle = (id) => {
     let car = cars.filter((c) => c.id == id);
     setSelectedVehicle(car[0]);
-   
+
     document.getElementById("my_modal_3").close();
   };
 
@@ -63,7 +61,7 @@ const Forms = () => {
       toast.error("Please select pick up and drop off location!");
       return;
     }
-    console.log(e.target)
+    console.log(e.target);
     const data = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -71,14 +69,14 @@ const Forms = () => {
       drop: drop,
       carName: selectedVehicle.name,
       pickTime: pickDateRef.current.value + " " + pickTimeRef.current.value,
-      roundTime: tripDateRef.current.value + " " + tripTimeRef.current.value,
-      bookedTime: new Date().toISOString()
+      roundTime: isToggled ? (tripDateRef.current.value + " " + tripTimeRef.current.value) : "",
+      bookedTime: new Date().toISOString(),
     };
     localStorage.setItem("car", JSON.stringify(data));
 
     const queryParams = new URLSearchParams(data).toString();
 
-    console.log(data)
+    console.log(data);
 
     toast.promise(
       fetch("https://car-rental-back-end.vercel.app/mail-to-user", {
@@ -103,8 +101,6 @@ const Forms = () => {
       }
     );
 
-    
-
     toast.promise(
       fetch("https://car-rental-back-end.vercel.app/mail-to-admin", {
         method: "POST",
@@ -113,16 +109,15 @@ const Forms = () => {
         },
         body: JSON.stringify({
           ...data,
-           email: "looserali420@gmail.com", 
-           client: {
-            name: data.name, 
+          email: "looserali420@gmail.com",
+          client: {
+            name: data.name,
             email: data.email,
             address: "client-address",
           },
           pick: pick,
           drop: drop,
-          
-          }),
+        }),
       })
         .then((res) => {
           return res.json();
@@ -210,7 +205,7 @@ const Forms = () => {
                                 <input
                                   type="radio"
                                   name="radio-10"
-                                  checked = {selectedVehicle.id == car.id}
+                                  checked={selectedVehicle.id == car.id}
                                   className="radio checked:bg-red-500 border-gray-400"
                                   onClick={() => handleSelectVehicle(car.id)}
                                 />
@@ -306,8 +301,8 @@ const Forms = () => {
                   </div>
                   <div>
                     <input
-                    name="pick_date"
-                    ref={pickDateRef}
+                      name="pick_date"
+                      ref={pickDateRef}
                       type="date"
                       placeholder="Type here"
                       className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs "
@@ -334,8 +329,8 @@ const Forms = () => {
                   </div>
                   <div>
                     <input
-                    ref={pickTimeRef}
-                    name="pick_time"
+                      ref={pickTimeRef}
+                      name="pick_time"
                       type="time"
                       placeholder="3.44 am"
                       className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs "
@@ -396,8 +391,8 @@ const Forms = () => {
                         </div>
                         <div>
                           <input
-                          ref={tripDateRef}
-                          name="trip_name"
+                            ref={tripDateRef}
+                            name="trip_name"
                             type="date"
                             placeholder="Type here"
                             className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs "
@@ -426,8 +421,8 @@ const Forms = () => {
                         </div>
                         <div>
                           <input
-                          ref={tripTimeRef}
-                          name="trip_time"
+                            ref={tripTimeRef}
+                            name="trip_time"
                             type="time"
                             placeholder="3.44 am"
                             className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs"
