@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import L from 'leaflet';
 const AutoComplete = ({id, handleLocation}) => {
 
     const [searchContainer, setSearchContainer] = useState(null)

@@ -4,6 +4,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import AutoComplete from "../components/AutoComplete";
 import toast from "react-hot-toast";
 import ThankYou from "./ThankYou";
+import L from 'leaflet';
+import 'leaflet-routing-machine';
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+
 
 const Forms = () => {
   const [isToggled, setIsToggled] = useState(false);
@@ -54,6 +58,24 @@ const Forms = () => {
       .catch((err) => {
         console.log(err);
       });
+
+      const map = L.map('map').setView([51.505, -0.09], 13);
+
+    // Add a tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Initialize routing control
+    L.Routing.control({
+      waypoints: [
+        L.latLng(51.5, -0.1),
+        L.latLng(51.51, -0.12)
+      ],
+      routeWhileDragging: true
+    }).addTo(map);
+
+
   }, []);
 
   const bookSubmit = (e) => {
@@ -253,7 +275,7 @@ const Forms = () => {
                     className="search focus:outline-none"
                     type="search"
                   /> */}
-                      <AutoComplete id="pick-up" handleLocation={handlePick} />
+                      {/* <AutoComplete id="pick-up" handleLocation={handlePick} /> */}
                     </div>
 
                     {/*  */}
@@ -277,7 +299,7 @@ const Forms = () => {
 
                     <div>
                       <h2 className="pickup">Drop Off Point</h2>
-                      <AutoComplete id="drop-off" handleLocation={handleDrop} />
+                      {/* <AutoComplete id="drop-off" handleLocation={handleDrop} /> */}
                       {/* <input
                     placeholder="Search drop off location"
                     className="search focus:outline-none"
@@ -568,7 +590,11 @@ const Forms = () => {
           </div> */}
             </div>
           </div>
+          <div id="map" style={{ height: '400px' }} />
         </div>
+
+        
+
       ) : (
         <div>Loading...</div>
       )}
