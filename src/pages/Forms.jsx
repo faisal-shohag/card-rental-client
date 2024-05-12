@@ -255,7 +255,7 @@ const Forms = () => {
                     className="search focus:outline-none"
                     type="search"
                   /> */}
-                      {/* <AutoComplete id="pick-up" handleLocation={handlePick} /> */}
+                      <AutoComplete id="pick-up" handleLocation={handlePick} />
                     </div>
 
                     {/*  */}
@@ -279,7 +279,7 @@ const Forms = () => {
 
                     <div>
                       <h2 className="pickup">Drop Off Point</h2>
-                      {/* <AutoComplete id="drop-off" handleLocation={handleDrop} /> */}
+                      <AutoComplete id="drop-off" handleLocation={handleDrop} />
                       {/* <input
                     placeholder="Search drop off location"
                     className="search focus:outline-none"
