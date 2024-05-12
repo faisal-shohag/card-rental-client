@@ -4,9 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import AutoComplete from "../components/AutoComplete";
 import toast from "react-hot-toast";
 import ThankYou from "./ThankYou";
-import L from 'leaflet';
-import 'leaflet-routing-machine';
-import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+
 
 
 const Forms = () => {
@@ -57,21 +55,6 @@ const Forms = () => {
         console.log(err);
       });
 
-      const map = L.map('map').setView([51.505, -0.09], 13);
-
-    // Add a tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Initialize routing control
-    L.Routing.control({
-      waypoints: [
-        L.latLng(51.5, -0.1),
-        L.latLng(51.51, -0.12)
-      ],
-      routeWhileDragging: true
-    }).addTo(map);
 
 
   }, []);
