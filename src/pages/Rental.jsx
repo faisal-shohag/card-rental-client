@@ -41,7 +41,7 @@ const Rental = () => {
         </h1>
         <div className="rent-details flex justify-between">
           <div className="w-[300px]  mb-9">
-            <img className="rent-logos mb-3" src="../../public/images/bujet1.png" alt="" />
+            <img className="rent-logos mb-3" src="./images/bujet1.png" alt="" />
             <h2 className="text-xl font-semibold mb-3">Enter your travel details</h2>
             <p>
               Enter your pickup, destination and trip details to place a trip
@@ -49,7 +49,7 @@ const Rental = () => {
             </p>
           </div>
           <div className="w-[300px]  mb-9">
-            <img className="rent-logos mb-3" src="../../public/images/bujet2.png" alt="" />
+            <img className="rent-logos mb-3" src="./images/bujet2.png" alt="" />
             <h2 className="text-xl font-semibold mb-3">Browse Through Bits</h2>
             <p>
               Enter your pickup, destination and trip details to place a trip
@@ -57,7 +57,7 @@ const Rental = () => {
             </p>
           </div>
           <div className="w-[300px]  mb-9">
-            <img className="rent-logos mb-3" src="../../public/images/bujet3.png" alt="" />
+            <img className="rent-logos mb-3" src="./images/bujet3.png" alt="" />
             <h2 className="text-xl font-semibold mb-3">Confirm Your Trip</h2>
             <p>
               Enter your pickup, destination and trip details to place a trip
