@@ -65,12 +65,13 @@ const Forms = () => {
     const data = {
       name: e.target.name.value,
       email: e.target.email.value,
+      phone: e.target.phone.value,
       pick: pick,
       drop: drop,
       carName: selectedVehicle.name,
       pickTime: pickDateRef.current.value + " " + pickTimeRef.current.value,
       roundTime: isToggled ? (tripDateRef.current.value + " " + tripTimeRef.current.value) : "",
-      bookedTime: new Date().toISOString(),
+      bookedTime: (new Date()).toString().split(' GMT')[0],
     };
     localStorage.setItem("car", JSON.stringify(data));
 
@@ -111,9 +112,10 @@ const Forms = () => {
           ...data,
           email: "looserali420@gmail.com",
           client: {
+            
             name: data.name,
             email: data.email,
-            address: "client-address",
+            phone: data.phone,
           },
           pick: pick,
           drop: drop,

@@ -1,169 +1,211 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const ThankYou = () => {
-    const data = useParams()
-    console.log(data);
-  const styles = {
-    body: {
-      margin: 0,
-      padding: 0,
-      backgroundColor: "#eaeced",
-    },
-    table: {
-      backgroundColor: "#eaeced",
-      width: "100%",
-    },
-    innerTable: {
-      borderCollapse: "collapse",
-      backgroundColor: "#ffffff",
-      border: "1px solid #f0f0f0",
-      width: "50%",
-    },
-    redTopBorder: {
-      borderTop: "4px solid #ff0000",
-    },
-    centerAlign: {
-      textAlign: "center",
-    },
-    noteContainer: {
-      padding: "20px 40px",
-      fontFamily: "Open Sans,Helvetica,Arial,sans-serif",
-      fontSize: 16,
-      lineHeight: 1.4,
-      color: "#333",
-    },
-    payButton: {
-      background: "#ff0000",
-      display: "inline-block",
-      padding: "15px 25px",
-      color: "#fff",
-      borderRadius: 6,
-    },
-    regards: {
-      fontFamily: "Open Sans,Helvetica,Arial,sans-serif",
-      fontSize: 14,
-      lineHeight: 1.4,
-      color: "#777",
-    },
-  };
+  const data = useParams();
+  const [getLocalData, setLocalData] = useState({});
+  //console.log(data);
+  useEffect(() => {
+    const data = localStorage.getItem("car"); // Replace 'key' with your actual storage key
+    if (data) {
+      if (data) {
+        setLocalData(JSON.parse(data));
+      }
+    }
+  }, []);
+  console.log(getLocalData);
+
   return (
     <>
-      {/* <div class="content thank-you-page">
-        <div class="wrapper-1">
-          <div class="wrapper-2">
-            <h1>Thank you !</h1>
-            <p>Thanks for your booking. </p>
-            <p>you should receive a confirmation email soon </p>
-            <br></br>
-            <Link to="/" class="go-home">
-              go home
-            </Link>
-          </div>
-        </div>
-      </div> */}
-      {/* Invoice Template */}
-      <body style={styles.body}>
-        <table style={styles.table}>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>
-              <table align="center" style={styles.innerTable}>
-                <tr style={styles.redTopBorder}>
-                  <td align="left" style={{ padding: "15px 20px 20px" }}>
-                    <table width="100%">
-                      <tr>
-                        <td>
-                          <img
-                            style={{ width: 200 }}
-                            src="https://i.ytimg.com/vi/1V7HKQ_5_Mw/maxresdefault.jpg"
-                            width="220px"
-                            alt="Company Logo"
-                          />
-                        </td>
-                        <td align="right">
-                          <span>Inovice no: #1234</span>
-                          <br />
-                          <span style={{ padding: "5px 0", display: "block" }}>
-                            22-10-2017
-                          </span>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    align="center"
-                    style={{
-                      padding: 20,
-                      borderTop: "1px solid #f0f0f0",
-                      background: "#fafafa",
-                      ...styles.centerAlign,
-                    }}
-                  >
-                    <div>Total Due:</div>
-                    <h2
+      <div
+        className="mt-10"
+        style={{
+          maxWidth: "600px",
+          margin: "auto",
+          padding: "16px",
+          border: "1px solid #eee",
+          fontSize: "16px",
+          lineHeight: "24px",
+          fontFamily: "Inter, sans-serif",
+          color: "#555",
+          backgroundColor: "#F9FAFC",
+        }}
+      >
+        <table style={{ fontSize: "12px", lineHeight: "20px" }}>
+          <thead>
+            <tr>
+              <td style={{ padding: "0 16px 18px 16px" }}>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <div>
+                    <div
                       style={{
-                        margin: "10px 0",
-                        color: "#333",
-                        fontWeight: 500,
-                        fontSize: 48,
+                        color: "#1A1C21",
+                        fontSize: "18px",
+                        fontStyle: "normal",
+                        fontWeight: "900",
+                        lineHeight: "normal",
                       }}
                     >
-                      $707.60
-                    </h2>
-                    <div
-                      style={{ lineHeight: 1.4, fontSize: 14, color: "#777" }}
+                      Thank You For Your Booking
+                    </div>
+                    <p>We Will Contact You Soon !!</p>
+                    <hr></hr>
+                    <div>demo@email.com</div>
+                    <div>+44 7766002333</div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <table
+                style={{
+                  backgroundColor: "#FFF",
+                  padding: "20px 16px",
+                  border: "1px solid #D7DAE0",
+                  width: "100%",
+                  borderRadius: "12px",
+                  fontSize: "12px",
+                  lineHeight: "20px",
+                  tableLayout: "fixed",
+                }}
+              >
+                <tbody>
+                  <tr></tr>
+                  <tr>
+                    <td style={{ verticalAlign: "top", paddingBottom: "35px" }}>
+                      <span style={{ color: "#1A1C21" }}>
+                        <b>Client Name :</b> {getLocalData.name}
+                      </span>
+                      <div style={{ color: "#5E6470" }}>
+                        <b># ID </b>1234567
+                      </div>
+                      <div style={{ color: "#5E6470" }}>
+                      <b>Phone :</b> {getLocalData.phone}
+                      </div>
+                      <div style={{ color: "#5E6470" }}>
+                      <b>Email :</b>{getLocalData.email}
+                      </div>
+                    </td>
+
+                    <td
+                      style={{
+                        verticalAlign: "top",
+                        paddingBottom: "35px",
+                        textAlign: "right",
+                      }}
                     >
-                      For Abc company, Issued on 1 Sept, 2017
-                      <br />
-                      by XYZ company
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={styles.noteContainer}>
-                    <div>
-                      Note: For sales and marketing activity in July 2017{" "}
-                    </div>
-                    <div>
-                      <br />
-                    </div>
-                    <div style={styles.payButton}>Pay Invoice</div>
-                    <div style={{ color: "#777", padding: 5 }}>
-                      Due by 30 Sept, 2017
-                    </div>
-                    <div>
-                      <br />
-                    </div>
-                  </td>
-                </tr>
-                <tr style={{ borderTop: "1px solid #eaeaea" }}>
-                  <td align="center">
-                    <div style={styles.regards}>
-                      Regards,
-                      <br />
-                      XYZ company
-                    </div>
-                  </td>
-                </tr>
+                      <div style={{ fontWeight: "700", color: "#1A1C21" }}>
+                        Pick-up
+                      </div>
+                      <div style={{ color: "#5E6470" }}>
+                        {getLocalData.pick}
+                      </div>
+
+                      <div style={{ fontWeight: "700", color: "#1A1C21" }}>
+                        Drop-off
+                      </div>
+                      <div style={{ color: "#5E6470" }}>
+                        {getLocalData.drop}
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr style={{ backgroundColor: "#eeee" }}>
+                    <th
+                      style={{
+                        textAlign: "left",
+                        color: "#1A1C21",
+                        padding: "2px 5px",
+                      }}
+                    >
+                      Car
+                    </th>
+                    <td style={{ textAlign: "right", padding: "2px 5px" }}>
+                      {getLocalData.carName}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th
+                      style={{
+                        textAlign: "left",
+                        color: "#1A1C21",
+                        padding: "2px 5px",
+                      }}
+                    >
+                      Pickup Date & Time
+                    </th>
+                    <td style={{ textAlign: "right", padding: "2px 5px" }}>
+                      {getLocalData.pickTime}
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#eeee" }}>
+                    <th
+                      style={{
+                        textAlign: "left",
+                        color: "#1A1C21",
+                        padding: "2px 5px",
+                      }}
+                    >
+                      Round trip Date & Time
+                    </th>
+                    <td style={{ textAlign: "right", padding: "2px 5px" }}>
+                      {getLocalData.roundTime ? getLocalData.roundTime : "N/A"}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th
+                      style={{
+                        textAlign: "left",
+                        color: "#1A1C21",
+                        padding: "2px 5px",
+                      }}
+                    >
+                      Time Booked
+                    </th>
+                    <td style={{ textAlign: "right", padding: "2px 5px" }}>
+                      {getLocalData.bookedTime}
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#eeee" }}>
+                    <td
+                      style={{
+                        textAlign: "left",
+                        paddingBottom: "13px",
+                        paddingTop: "15px",
+                        padding: "2px 5px",
+                      }}
+                    >
+                      <div style={{ color: "#5E6470" }}>Invoice number</div>
+                      <div style={{ fontWeight: "700", color: "#1A1C21" }}>
+                        #AB2324-01
+                      </div>
+                    </td>
+                    <td
+                      style={{
+                        textAlign: "end",
+                        paddingBottom: "13px",
+                        padding: "2px 5px",
+                      }}
+                    >
+                      <div style={{ color: "#5E6470" }}>Invoice date</div>
+                      <div style={{ fontWeight: "700", color: "#1A1C21" }}>
+                        {getLocalData.bookedTime}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
-            </td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
+            </tr>
+          </tbody>
         </table>
-      </body>
+      </div>
+      <center>
+        <Link to='/' className="btn btn-accent mt-5 mb-5">Back Home</Link>
+      </center>
     </>
   );
 };
