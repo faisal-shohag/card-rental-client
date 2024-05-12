@@ -22,25 +22,25 @@ const Carinfo = () => {
   };
   return (
     <div>
-      <div className="mt-24 mb-10 mx-12">
-        <h1 className="mb-10 text-4xl font-bold">
+      <div className="rent-vehicle2 mt-24 mb-10 mx-12">
+        <h1 className="rent-vehicle-header2 mb-10 text-4xl font-bold">
           Rent a vehicle that fit your budget
         </h1>
-        <div className="grid grid-cols-6 justify-between gap-5">
+        <div className="rent-details2 grid grid-cols-6 justify-between gap-5">
           {car.map((item, index) => {
             return (
-              <div key={index} className="border shadow-lg p-4 text-center">
+              <div key={index} className="rent-details-all border shadow-lg p-4 text-center">
                 <img
                   src={item.img}
                   alt=""
-                  className=""
-                  style={{ width: "200px",margin:'auto' }}
+                  className="rent-details-all-cars"
+                  /* style={{ width: "200px",margin:'auto' }} */
                 />
-                <h2 className="text-xl font-semibold">{item.name}</h2>
-                <p>{item.seat}</p>
+                <h2 className="rent-car-names text-xl font-semibold">{item.name}</h2>
+                <p className="rent-car-seat">{item.seat}</p>
                 <button
                   onClick={() => modalHandler(item.id)}
-                  className="bg-[#29D8DB] hover:bg-[#29D8DB] text-white font-bold py-2 px-4 rounded mt-2"
+                  className="rent-details2-btn bg-[#29D8DB] hover:bg-[#29D8DB] text-white font-bold py-2 px-4 rounded mt-2"
                 >
                   More info
                 </button>
