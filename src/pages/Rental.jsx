@@ -24,7 +24,7 @@ const Rental = () => {
                 affordable prices
               </h3>
 
-              <button className="bg-[#29D8DB] flex items-center gap-2 text-white rounded-full px-10 my-4 py-2 font-semibold ">
+              <button className="bg-[#29D8DB] flex items-center gap-2 text-white rounded-full px-10 my-4 py-4 font-semibold ">
                 Learn More{" "}
                 <span class="material-symbols-outlined">arrow_downward</span>
               </button>

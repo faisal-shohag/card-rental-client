@@ -160,7 +160,7 @@
   }
   
   .search{
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 0, 0);
   width: 470px;
   }
   .search::placeholder {
@@ -225,6 +225,7 @@
   
     :root{
       background-color:#FEF8F7;
+      margin-top: -10px;
 
     }
   
@@ -263,8 +264,17 @@
       padding-left: 10px;
       padding-right: 10px;
     }
+    .car-select{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 6 columns */
+      grid-gap: 15px;
+    }
     .car {
       width: 50px;
+      height: auto;
+    }
+    .all-cars{
+      width: 90px;
       height: auto;
     }
     .car-seat {
@@ -336,15 +346,17 @@
       margin-right: 0;
       padding-left: 15px;
       padding-right: 15px;
+      
     }
     .car-selects-btn{
-      width: 88px;
+      width: 150px;
     }
     .car-seats{
       font-size: 9.5px;
     }
+
     .rent-vehicle{
-      margin-top: 500px;
+      margin-top: 650px;
       padding-left: 15px;
       padding-right: 15px;
       margin-left: 0;
@@ -465,11 +477,16 @@
       margin-bottom: 10px;
     }
     .footer{
-      display: flex;
+   /*    display: flex;
       flex-direction: column;
       padding: 15px;
       padding-top: 70px;
       row-gap: 35px;
+ */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 6 columns */
+      grid-gap: 25px;
+      padding-top: 60px;
     }
     .before-footer-btn{
       padding-left: 28px;

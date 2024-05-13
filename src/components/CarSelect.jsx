@@ -33,7 +33,7 @@ const CarSelect = () => {
       <h1 className="font-semibold mb-4 ml-5 text-lg">
         Which vehicle do you need?
       </h1>
-      <div className="grid grid-cols-3 gap-4 mb-6 px-4">
+      <div className="car-select grid grid-cols-3 gap-4 mb-6 px-4">
         {
           cars.map(item=>  
           <button
@@ -48,7 +48,7 @@ const CarSelect = () => {
             <img
               src={item.img}
               alt=""
-              className="w-[60px] h-[60px] mx-auto"
+              className="all-cars w-[60px] h-[60px] mx-auto"
             />
             <h5 className="font-semibold">{item.name}</h5>
             <p className="text-xs car-seats">{item.seat}</p>
