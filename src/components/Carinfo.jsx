@@ -29,7 +29,7 @@ const Carinfo = () => {
         <div className="rent-details2 grid grid-cols-6 justify-between gap-5">
           {car.map((item, index) => {
             return (
-              <div key={index} className="rent-details-all border shadow-lg p-4 text-center">
+              <div key={index} className="rent-details-all border shadow-lg p-4 text-center rounded-lg">
                 <img
                   src={item.img}
                   alt=""

@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root{
     background-color:#FEF8F7;
     margin-top: -20px;
@@ -217,287 +215,6 @@
     height: 300px;
     background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1.0)), url('../images/hero-car2.jpg');
   }  
-
-
-
-  /* responsive----------------------------------------- */
- 
-  @media (max-width: 800px) {
-  
-    :root{
-      background-color:#FEF8F7;
-      margin-top: -10px;
-
-    }
-  
-     /* -------------------only form ----------------- */
-    .sedan {
-     font-size: 14px;
-    }
-  
-    .devider {
-      width: 360px;
-    }
-  
-    .main-form{
-      width: 360px;
-    }
-  
-    .header-part{
-    background-color:#F04935 ;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    }
-  
-    .rental{
-      color: rgb(255, 255, 255);
-    }
-    .trip{
-      color: rgb(255, 255, 255);
-    }
-    .arrow {
-      color: rgb(255, 255, 255);
-    }
-  
-    .car-brand{
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .car-select{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 6 columns */
-      grid-gap: 15px;
-    }
-    .car {
-      width: 50px;
-      height: auto;
-    }
-    .all-cars{
-      width: 90px;
-      height: auto;
-    }
-    .car-seat {
-      font-size: 14px;
-    }
-  
-  .destination{
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .border-dashed {
-      
-    width: 300px;
-  }
-  .pickup{
-    font-size: 14px;
-  }
-    .pickup-logo {
-      font-size: 13px;
-    }
-    .pickup-logo2 {
-      font-size: 13px;
-    }
-    .drop-logo {
-      font-size: 13px;
-    }
-    .vertile{
-      background-color: rgb(176, 176, 176);
-      height: 55px;
-      width: 2px;
-    }
-  
-    .date-time {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .dt {
-      font-size: 14px;
-    }
-    .dtt{
-      color: rgb(255, 255, 255);
-      border: none;
-      font-weight: 400;
-      width: 145px;
-      font-size: 12px;
-      background-color: #2095F3;
-    }
-    .messege {
-      width: 340px;
-      height: 100px;
-    }
-    .form-btn {
-      width: 340px;
-    }
-
-    /* --------rental page----------- */
-
-    .hero-bg{
-      height: 350px;
-    }
-    .hero-items{
-      padding-top: 50px;
-      padding-bottom: 20px;
-    }
-    .hero-header{
-      font-size: 32px;
-    }
-    .car-selects{
-      margin-right: 0;
-      padding-left: 15px;
-      padding-right: 15px;
-      
-    }
-    .car-selects-btn{
-      width: 150px;
-    }
-    .car-seats{
-      font-size: 9.5px;
-    }
-
-    .rent-vehicle{
-      margin-top: 650px;
-      padding-left: 15px;
-      padding-right: 15px;
-      margin-left: 0;
-      margin-right: 0;
-    }
-    .rent-vehicle-header{
-      font-size: 32px;
-      margin-bottom: 60px;
-    }
-    .rent-details{
-      display: flex;
-      flex-direction: column;
-    }
-
-    .rent-logos{
-      width: 65px;
-    }
-    .popularity{
-      margin-left: 15px;;
-      margin-right: 15px;
-      padding: 25px;
-    }
-    .popularity-info{
-      width: 100px;
-      padding-left: 0;
-      padding-right: 0;
-      
-    }
-    .popularity-count{
-      font-size: 40px;
-    }
-    .rent-vehicle-header2{
-      font-size: 32px;
-    }
-    .rent-vehicle2{
-      padding-left: 15px;
-      padding-right: 15px;
-      margin-left: 0;
-      margin-right: 0
-    }
-    .rent-details2{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 6 columns */
-      grid-gap: 5px;
-    }
-    .rent-details-all{
-      padding: 12px;
-    }
-    .rent-details-all-cars{
-      width: 85px;
-    }
-    .rent-car-names{
-      font-size: 15px;
-    }
-    .rent-car-seat{
-      font-size: 9px;
-    }
-    .rent-details2-btn{
-      padding: 5px;
-      font-size: 15px;
-    }
-    .jatri-choose-header{
-      margin-bottom: 0px;
-    }
-    .jatri-choose{
-      margin-left: 15px;
-      margin-right: 15px;
-    }
-    .jatri-choose-info{
-      display: flex;
-      flex-direction: column;
-    }
-    .jatri-choose-options{
-      font-size: 25px;
-      width: 100%;
-    }
-
-    .better-introduce{
-      margin-left: 15px;
-      margin-right: 15px;
-      padding: 5px;
-    }
-    .better-introduce-inner{
-      margin-left: 0;
-      padding: 10px;
-    }
-    .better-introduce-inner-header{
-      margin-top: 0px;
-      font-size: 40px;
-    }
-    .faq{
-      margin-left: 15px;
-      margin-right: 15px;
-    }
-    .faq-header{
-      font-size: 32px;
-    }
-    .collapse-title{
-      font-size: 18px;
-    }
-    .collapse-content{
-      font-size: 14px;
-    }
-    .before-footer-inner{
-      display: flex;
-      flex-direction: column;
-      padding: 15px;
-      align-items: start;
-      padding-bottom: 30px;
-      
-    }
-    .before-footer-inner-header{
-      font-size: 35px;
-      margin-bottom: 10px;
-    }
-    .before-footer-text{
-      width: 100%;
-      margin-bottom: 10px;
-    }
-    .footer{
-   /*    display: flex;
-      flex-direction: column;
-      padding: 15px;
-      padding-top: 70px;
-      row-gap: 35px;
- */
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 6 columns */
-      grid-gap: 25px;
-      padding-top: 60px;
-    }
-    .before-footer-btn{
-      padding-left: 28px;
-      padding-right: 28px;
-    }
-
-
-
-
-  }
   
 
   
@@ -520,8 +237,9 @@
     padding-top: 0;
     line-height: 0px;
   }
+ 
   .leaflet-locationiq-control{
-    width: 482px !important;
+    width: 487px !important;
   }
 
   .leaflet-locationiq-result{
@@ -543,7 +261,6 @@
   .leaflet-locationiq-close{
     position: absolute;
     top: 0;
-    
   }
 
 
@@ -643,3 +360,282 @@
   td{
     padding: 10px;
   }
+
+
+    /* responsive----------------------------------------- */
+ 
+    @media (max-width: 800px) {
+  
+      :root{
+        background-color:#FEF8F7;
+  
+      }
+    
+       /* -------------------only form ----------------- */
+      .sedan {
+       font-size: 14px;
+      }
+
+      .leaflet-locationiq-control{
+        width:316px !important;
+      }
+    
+      .devider {
+        width: 360px;
+      }
+    
+      .main-form{
+        width: 360px;
+      }
+    
+      .header-part{
+      background-color:#F04935 ;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      }
+    
+      .rental{
+        color: rgb(255, 255, 255);
+      }
+      .trip{
+        color: rgb(255, 255, 255);
+      }
+      .arrow {
+        color: rgb(255, 255, 255);
+      }
+    
+      .car-brand{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .car-select{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 6 columns */
+        grid-gap: 15px;
+      }
+      .car {
+        width: 50px;
+        height: auto;
+      }
+      .all-cars{
+        width: 90px;
+        height: auto;
+      }
+      .car-seat {
+        font-size: 14px;
+      }
+    
+    .destination{
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .border-dashed {
+        
+      width: 300px;
+    }
+    .pickup{
+      font-size: 14px;
+    }
+      .pickup-logo {
+        font-size: 13px;
+      }
+      .pickup-logo2 {
+        font-size: 13px;
+      }
+      .drop-logo {
+        font-size: 13px;
+      }
+      .vertile{
+        background-color: rgb(176, 176, 176);
+        height: 55px;
+        width: 2px;
+      }
+    
+      .date-time {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .dt {
+        font-size: 14px;
+      }
+      .dtt{
+        color: rgb(255, 255, 255);
+        border: none;
+        font-weight: 400;
+        width: 145px;
+        font-size: 12px;
+        background-color: #2095F3;
+      }
+      .messege {
+        width: 340px;
+        height: 100px;
+      }
+      .form-btn {
+        width: 340px;
+      }
+  
+      /* --------rental page----------- */
+      .hero-bg{
+        height: 350px;
+      }
+      .hero-items{
+        padding-top: 50px;
+        padding-bottom: 20px;
+      }
+      .hero-header{
+        font-size: 34px;
+      }
+      .car-selects{
+        margin-right: 0;
+        
+      }
+      .car-selects-btn{
+        width: 135px;
+      }
+      .car-seats{
+        font-size: 9.5px;
+      }
+  
+      .rent-vehicle{
+        margin-top: 670px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .rent-vehicle-header{
+        font-size: 32px;
+        margin-bottom: 60px;
+      }
+      .rent-details{
+        display: flex;
+        flex-direction: column;
+      }
+  
+      .rent-logos{
+        width: 65px;
+      }
+      .popularity{
+        margin-left: 15px;;
+        margin-right: 15px;
+        padding: 25px;
+      }
+      .popularity-info{
+        width: 100px;
+        padding-left: 0;
+        padding-right: 0;
+        
+      }
+      .popularity-count{
+        font-size: 40px;
+      }
+      .rent-vehicle-header2{
+        font-size: 32px;
+      }
+      .rent-vehicle2{
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: 0;
+        margin-right: 0
+      }
+      .rent-details2{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 6 columns */
+        grid-gap: 5px;
+      }
+      .rent-details-all{
+        padding: 18px;
+      }
+      .rent-details-all-cars{
+        width: 85px;
+      }
+      .rent-car-names{
+        font-size: 15px;
+      }
+      .rent-car-seat{
+        font-size: 9px;
+      }
+      .rent-details2-btn{
+        padding: 5px;
+        font-size: 15px;
+      }
+      .jatri-choose-header{
+        margin-bottom: 0px;
+      }
+      .jatri-choose{
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+      .jatri-choose-info{
+        display: flex;
+        flex-direction: column;
+      }
+      .jatri-choose-options{
+        font-size: 25px;
+        width: 100%;
+      }
+  
+      .better-introduce{
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 5px;
+      }
+      .better-introduce-inner{
+        margin-left: 0;
+        padding: 10px;
+      }
+      .better-introduce-inner-header{
+        margin-top: 0px;
+        font-size: 40px;
+      }
+      .faq{
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+      .faq-header{
+        font-size: 32px;
+      }
+      .collapse-title{
+        font-size: 18px;
+      }
+      .collapse-content{
+        font-size: 14px;
+      }
+      .before-footer-inner{
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        align-items: start;
+        padding-bottom: 30px;
+        
+      }
+      .before-footer-inner-header{
+        font-size: 35px;
+        margin-bottom: 10px;
+      }
+      .before-footer-text{
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .footer{
+     /*    display: flex;
+        flex-direction: column;
+        padding: 15px;
+        padding-top: 70px;
+        row-gap: 35px;
+   */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 6 columns */
+        grid-gap: 25px;
+        padding-top: 60px;
+      }
+      .before-footer-btn{
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+     
+  
+  
+    }

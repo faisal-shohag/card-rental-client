@@ -29,7 +29,7 @@ const CarSelect = () => {
     {
     cars.length != 0 ?
     <div className="flex mt-6 lg:w-1/2 lg:justify-end items-end lg:mt-4 lg:h-[550px] lg:-mb-16 mr-14 car-selects">
-    <div className="w-full max-w-md bg-white border-2 rounded-lg dark:bg-white px-2 pt-6">
+    <div className="w-full max-w-md bg-white border-2 rounded-lg dark:bg-white px-2 pt-6 car-selects-all">
       <h1 className="font-semibold mb-4 ml-5 text-lg">
         Which vehicle do you need?
       </h1>
