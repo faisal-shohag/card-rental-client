@@ -340,7 +340,7 @@ const Forms = () => {
                       name="pick_time"
                       type="time"
                       placeholder="3.44 am"
-                      className="dtt2 input bg-cyan-400 text-white  w-full max-w-xs "
+                      className="dttt input bg-cyan-400 text-white  w-full max-w-xs "
                     />
                   </div>
                 </div>

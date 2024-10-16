@@ -5,8 +5,9 @@
 :root{
     background-color:#FEF8F7;
     margin-top: -20px;
-    
   }
+  
+
   .hero-bg{
     background-repeat: no-repeat;
     background-size: cover;
@@ -332,6 +333,12 @@
     color:#5892FF;
     font-weight:600;
   }
+
+    
+
+
+
+
   
   @media (min-width:360px){
     .thank-you-page h1{
@@ -368,8 +375,16 @@
   
       :root{
         background-color:#FEF8F7;
-  
       }
+      
+      .dttt::-webkit-calendar-picker-popup {
+        width: 200px !important; 
+      } 
+
+      
+
+
+      
     
        /* -------------------only form ----------------- */
       .sedan {
@@ -468,6 +483,15 @@
         font-size: 12px;
         background-color: #2095F3;
       }
+
+
+   
+
+
+
+
+
+
       .messege {
         width: 340px;
         height: 100px;
